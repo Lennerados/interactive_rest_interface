@@ -1,8 +1,7 @@
 #!/bin/python
 
 from flask import Flask
-import threading
-import time
+from threading import Thread
 
 app = Flask(__name__, template_folder='templates')
 
@@ -21,6 +20,6 @@ def run():
 		data['value'] = int(inp)
 
 if __name__ == '__main__':
-	threading.Thread(target = run).start()
+	Thread(target = run).start()
 	app.run(debug=True)
 
