@@ -2,6 +2,7 @@
 
 from flask import Flask
 from threading import Thread
+import sys
 
 app = Flask(__name__, template_folder='templates')
 
@@ -25,5 +26,14 @@ def run():
 
 if __name__ == '__main__':
 	Thread(target = run).start()
-	app.run(debug=True)
+	port = 5000
+	if len(sys.argv) > 1:
+		try:
+			port = int(sys.argv[1])
+			if port < 1 or port > 65535:
+				print("Port must be between 1 and 65535. Using default port 5000")
+				port = 5000
+		except:
+			print("Wrong port argument. Using default port 5000")
+	app.run(debug=True, port=port)
 
