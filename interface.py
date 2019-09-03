@@ -6,7 +6,7 @@ import sys
 
 app = Flask(__name__, template_folder='templates')
 
-data = { 'counter': 1, 'value': 0.0, 'teststring': 'Hallo' }
+data = { 'counter': 1, 'value': 0.0, 'teststring': 'Hello' }
 
 @app.route('/')
 def home():
@@ -19,10 +19,13 @@ def run():
 	global data
 	while True:
 		try:
-			inp = input("Please enter value: ")
-			data['value'] = float(inp)
+			userInput(input("Please enter value: "))
 		except:
 			print("An error occured")
+
+def userInput(inp):
+	global data
+	data['value'] = float(inp)
 
 if __name__ == '__main__':
 	Thread(target = run).start()
