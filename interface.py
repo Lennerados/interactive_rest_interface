@@ -38,5 +38,5 @@ if __name__ == '__main__':
 				port = 5000
 		except:
 			print("Wrong port argument. Using default port 5000")
-	app.run(debug=True, port=port)
+	app.run(debug=False, port=port)
 
